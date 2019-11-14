@@ -26,8 +26,8 @@ function customer_list_render(){
 }
 
 if(isset($_POST['customer_list_add'])) {
-    $new_forename = $_POST['forename'];
-    $new_surname = $_POST['surname'];
+    $new_forename = check_str($_POST['forename']);
+    $new_surname = check_str($_POST['surname']);
     $add_data = "INSERT INTO `customerlist` (`id`, `forename`, `surname`) VALUES (NULL, '"
         . $new_forename
         . "', '"

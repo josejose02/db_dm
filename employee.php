@@ -14,22 +14,22 @@ function customer_list_render(){
                 <td>" . $row["forename"] . "</td>
                 <td>" . $row["surname"] . "</td>
                 <td>" . $row["job_name"] . "</td>
-                <!-- <td>
+                <td>
                     <form method='post'>
                         <input name=\"customer_list_remove\" type=\"hidden\">
                         <input name=\"id\" value='" . $row["id"] . "' type=\"hidden\">
                         <button type=\"submit\" class=\"btn btn-outline-danger\">Delete</button>
                     </form>
-                </td> -->
+                </td>
             </tr>";
     }
 }
 
-/*
+
 if(isset($_POST['employee_add'])) {
-    $new_forename = $_POST['forename'];
-    $new_surname = $_POST['surname'];
-    $new_job_title = $_POST['job_title'];
+    $new_forename = check_str($_POST['forename']);
+    $new_surname = check_str($_POST['surname']);
+    $new_job_title = check_str($_POST['job_title']);
     " 'T', 'T', 'T', NULL);";
     $add_data = "INSERT INTO `employee` (`id`, `forename`, `surname`, `job_name`, `store_id`) VALUES (NULL,'"
         . $new_forename
@@ -45,11 +45,11 @@ if(isset($_POST['employee_add'])) {
 
 if(isset($_POST['customer_list_remove'])) {
     $remove_id = $_POST['id'];
-    $remove_data = "DELETE FROM `customerlist` WHERE `customerlist`.`id` = " . $remove_id;
+    $remove_data = "DELETE FROM `employee` WHERE `employee`.`id` = " . $remove_id;
     run_sql($remove_data);
     echo "<meta http-equiv='refresh' content='0'>";
 }
-*/
+
 ?>
 
 <div class="container">
@@ -65,7 +65,7 @@ if(isset($_POST['customer_list_remove'])) {
                             <th style="width: 25%%">Forename</th>
                             <th style="width: 25%">Surname</th>
                             <th style="width: 30%">Job Title</th>
-                            <!-- <th style="width: 8%">Actions</th> -->
+                            <th style="width: 8%">Actions</th>
                         </tr>
                         </thead>
                         <tbody>
@@ -78,7 +78,7 @@ if(isset($_POST['customer_list_remove'])) {
             </div>
         </div>
     </div>
-    <!--
+
     <div class="row">
         <div class="col pt-4 pb-4">
             <div class="card">
@@ -108,7 +108,7 @@ if(isset($_POST['customer_list_remove'])) {
             </div>
         </div>
     </div>
-    -->
+
 </div>
 
 <?php
