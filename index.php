@@ -33,6 +33,7 @@ if(isset($_POST['customer_list_add'])) {
         . "', '"
         . $new_surname
         . "')";
+
     run_sql($add_data);
     echo "<meta http-equiv='refresh' content='0'>";
 }
