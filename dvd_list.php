@@ -34,19 +34,6 @@ function dvd_list_render(){
     }
 }
 
-if(isset($_POST['customer_list_add'])) {
-    $new_forename = check_str($_POST['forename']);
-    $new_surname = check_str($_POST['surname']);
-    $add_data = "INSERT INTO `Customer` (`id`, `forename`, `surname`) VALUES (NULL, '"
-        . $new_forename
-        . "', '"
-        . $new_surname
-        . "')";
-
-    run_sql($add_data);
-    echo "<meta http-equiv='refresh' content='0'>";
-}
-
 if(isset($_POST['customer_list_remove'])) {
     $remove_id = $_POST['id'];
     $remove_data = "DELETE FROM `Customer` WHERE `Customer`.`id` = " . $remove_id;

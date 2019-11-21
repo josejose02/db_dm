@@ -39,7 +39,8 @@ function main(){
                 </div>
             </form>
                 
-            <form method='post'>
+            <form method=\"post\">
+                <input name=\"sql\" value=\"debt\" hidden>
                 <div class=\"input-group mb-3\">
                   <div class=\"input-group-prepend\">
                     <label class=\"input-group-text\">Debt</label>
@@ -53,6 +54,16 @@ function main(){
             ";
         }
     }
+}
+
+if(isset($_POST['customer_list_add'])) {
+    $sql = check_str($_POST['sql']);
+    $value = check_str($_POST['value']);
+    $sql = "UPDATE customerlist ". "SET surname = '$cust_surname' ". "WHERE id = $cust_id" ;
+    $add_data = "UPDATE `Customer` SET " . $sql. " = " . $value ." WHERE id = ";
+
+    run_sql($add_data);
+    echo "<meta http-equiv='refresh' content='0'>";
 }
 
 ?>
