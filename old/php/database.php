@@ -1,11 +1,20 @@
 <?php
 
-function check_str($str){
+function db_connection(){
     $db_host = "localhost";
     $db_user = "root";
     $db_pass = "";
 
     $db = mysqli_connect($db_host, $db_user, $db_pass);
+
+    if (!$db){
+        die("Connection failed: " . mysqli_connect_error());
+    }
+    return $db;
+}
+
+function check_str($str){
+    $db = db_connection();
     $return = mysqli_real_escape_string($db, $str);
     mysqli_close($db);
 
@@ -13,12 +22,9 @@ function check_str($str){
 }
 
 function run_sql($sql) {
-    $db_host = "localhost";
-    $db_user = "root";
-    $db_pass = "";
     $db_database = "Customer";
+    $db = db_connection();
 
-    $db = mysqli_connect($db_host, $db_user, $db_pass);
     mysqli_select_db($db, $db_database);
     $result = mysqli_query($db, $sql);
 
